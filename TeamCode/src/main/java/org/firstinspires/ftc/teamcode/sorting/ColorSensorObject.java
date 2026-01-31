@@ -22,7 +22,7 @@ public class ColorSensorObject{
 
 
 
-    public ColorSensorObject(String hardware1, String hardware2){
+    public ColorSensorObject(HardwareMap hardwareMap, String hardware1, String hardware2){
 
 
         sensor1 = hardwareMap.get(NormalizedColorSensor.class, hardware1);
