@@ -28,8 +28,8 @@ public class ColorSensorObject{
         sensor1 = hardwareMap.get(NormalizedColorSensor.class, hardware1);
         sensor2 = hardwareMap.get(NormalizedColorSensor.class, hardware2);
 
-        sensor1.setGain(11);
-        sensor2.setGain(11);
+        sensor1.setGain(2);
+        sensor2.setGain(2);
     }
 
 
@@ -44,9 +44,17 @@ public class ColorSensorObject{
 
         //THESE TOLERANCES MOST LIKELY NEED TO BE TUNED, I TESTED WITH A SENSOR THAT WASN'T IN THE CHAMBER
         //Conditions in the chamber are different, lighting and stuff impacts it a lot.
-        if((colors1.blue >= 0.7 && colors1.red >= 0.35) || (colors2.blue >= 0.7 && colors2.red >= 0.35) ){
+        /*if((colors1.blue >= 0.7 && colors1.red >= 0.35) || (colors2.blue >= 0.7 && colors2.red >= 0.35) ){
             return 'G';
         }else if(colors1.green > 0.35 || colors2.green > 0.35){
+            return 'P';
+        }else{
+            return 'N';
+        }*/
+
+        if( (hsvValues1[0] >= 150 && hsvValues1[0] <= 170) || (hsvValues2[0] >= 150 && hsvValues2[0] <= 170) ){
+            return 'G';
+        }else if( (hsvValues1[0] >= 220 && hsvValues1[0] <= 240) || (hsvValues2[0] >= 220 && hsvValues2[0] <= 240)  ){
             return 'P';
         }else{
             return 'N';
